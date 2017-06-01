@@ -208,14 +208,15 @@ void GTF_parser::gff_fh(string feature_file, string feature){
 regex GTF_parser::get_attrib_regex(string feature_file){
 	regex attrib_re;
 	if(regex_match(feature_file,gtf_re)){
-		return  attrib_re = regex("(?:id|name)\\s{1,}\"([^\"]+)\"",regex_constants::icase);
+		attrib_re = regex("(?:id|name)\\s{1,}\"([^\"]+)\"",regex_constants::icase);
 	}else if(regex_match(feature_file,gff_re)){
-		return attrib_re = regex("(?:id|name)\\=([^=]+)(?:\\;|$)",regex_constants::icase);
+		attrib_re = regex("(?:id|name)\\=([^=]+)(?:\\;|$)",regex_constants::icase);
 	}else{
 		cerr << "ERROR! cannot determine file type for file "+feature_file+". Check your input" << endl;
 		cerr << "exiting..." <<  endl;
 		exit(1);
 	}
+	return attrib_re;
 }
 
 void GTF_parser::filter_gff(string line, regex feat_re, regex attrib_re){
