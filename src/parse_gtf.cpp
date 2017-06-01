@@ -107,6 +107,7 @@ void GTF_parser::ids_fh(string id_file){
 }
 
 void GTF_parser::parse_ids(string ids){
+	transform(ids.begin(), ids.end(), ids.begin(), ::toupper);
 	idset.insert(ids);
 	if(remove_version){
 		idset.insert(regex_replace(ids, version_re,""));
@@ -223,6 +224,7 @@ void GTF_parser::filter_gff(string line, regex feat_re, regex attrib_re){
 		sregex_token_iterator swe;
 		while(swb!=swe){
 			string attrib_id =*swb++;
+			transform(attrib_id.begin(), attrib_id.end(), attrib_id.begin(), ::toupper);
 			if(idset.find(attrib_id)!=idset.end()){
 				cout<<line<<endl;
 				break;
@@ -237,6 +239,7 @@ void GTF_parser::filter_gff_noversion(string line, regex feat_re, regex attrib_r
 		sregex_token_iterator swe;
 		while(swb!=swe){
 			string attrib_id =*swb++;
+			transform(attrib_id.begin(), attrib_id.end(), attrib_id.begin(), ::toupper);
 			if(idset.find(attrib_id)!=idset.end()){
 				cout<<line<<endl;
 				break;
@@ -253,6 +256,7 @@ void GTF_parser::filter_gff(string line, regex attrib_re){
 	sregex_token_iterator swe;
 	while(swb!=swe){
 		string attrib_id =*swb++;
+		transform(attrib_id.begin(), attrib_id.end(), attrib_id.begin(), ::toupper);
 		if(idset.find(attrib_id)!=idset.end()){
 			cout<<line<<endl;
 			break;
@@ -265,6 +269,7 @@ void GTF_parser::filter_gff_noversion(string line, regex attrib_re){
 	sregex_token_iterator swe;
 	while(swb!=swe){
 		string attrib_id =*swb++;
+		transform(attrib_id.begin(), attrib_id.end(), attrib_id.begin(), ::toupper);
 		if(idset.find(attrib_id)!=idset.end()){
 			cout<<line<<endl;
 			break;
