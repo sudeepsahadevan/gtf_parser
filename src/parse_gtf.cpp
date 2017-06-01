@@ -282,7 +282,7 @@ void GTF_parser::filter_gff_noversion(string line, regex attrib_re){
 
 void show_help(string prog){
 	cout << "Usage: "<<prog<<" [-argument] <Val>"<<endl;
-	cout << "Copyright (C) 2017  Sudeep Sahadevan" << endl;
+//	cout << "Copyright (C) 2017  Sudeep Sahadevan" << endl;
 	cout << "Given a list of gene names/ids in a file and a gtf/gff file, filter the gtf/gff file for features annotated with input names/ids" << endl;
 	cout << "--help, -h	Show this message and exit"<<endl;
 	cout << "--version, -v	Show version information and exit"<<endl;
